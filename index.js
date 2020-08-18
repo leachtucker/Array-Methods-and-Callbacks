@@ -54,7 +54,7 @@ function getWinners(getFinals) {
         } else if (homeScore < awayScore) {
             winner = element['Away Team Name'];
         } else {
-            // This is part of the stretch goal
+            // This is part of the stretch goal listed in the readMe
             winner = element['Win conditions'].split(' win ')[0];
         }
         winners.push(winner);
@@ -109,13 +109,21 @@ console.log(getAverageGoals(fifaData));
 Hint: Investigate your data to find "team initials"!
 Hint: use `.reduce` */
 
-function getCountryWins( /* code here */ ) {
+function getCountryWins(data, teamInitials) {
+    let teamGames = []; // Games that the team played on (either: home or away side)
+    data.forEach(function(item) {
+        if (item['Home Team Initials'] === teamInitials || item['Away Team Initials'] === teamInitials) {
+            teamGames.push(item);
+        }
+    });
 
-    /* code here */
+    let gamesWon = 0;
 
+
+    return teamGames;
 };
 
-getCountryWins();
+console.log(getCountryWins(fifaData, "ARG"));
 
 
 /* Stretch 3: Write a function called getGoals() that accepts a parameter `data` and returns the team with the most goals score per appearance (average goals for) in the World Cup finals */
@@ -140,3 +148,5 @@ function badDefense( /* code here */ ) {
 badDefense();
 
 /* If you still have time, use the space below to work on any stretch goals of your chosing as listed in the README file. */
+
+// Splicing the win conditions on task 4 was a stretch task according to the readMe doc.
