@@ -70,7 +70,6 @@ Parameters:
  * callback function getWinners
  * callback function getYears
  */
-
 function getWinnersByYear(getWinners, getYears) {
     let string = ``;
     getWinners.forEach(function(item, index) {
